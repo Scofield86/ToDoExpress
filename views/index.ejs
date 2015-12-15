@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>ToDo</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body class="main">
+<div class="well">
+  <div>
+    <p class="textCenter"> ToDo-List</p>
+  </div>
+  <div>
+    <input class="ToDoInput" type="text" data-bind="value: ToDotextInput, valueUpdate: 'afterkeydown', enterkey: Add" />
+    <button class="btn btn-sm btn-default" type="button" value="button" data-bind="click: Add">Add</button>
+  </div>
+  <div class="ToDo">
+    <!-- ko foreach: ToDoItems -->
+    <div data-bind="visible: shouldShowToDo">
+      <input class="ToDoCheckbox" type="checkbox" data-bind="checked: done" />
+      <span class="ToDoText" data-bind="text: toDoText"></span>
+    </div>
+    <!-- /ko -->
+  </div>
+  <div>
+    <button class="elementsLeft btn btn-sm btn-default" type="button" value="button" data-bind="click: Clear">Clear</button>
+    <p class="elementsRight text"> Show done items</p>
+    <input class="checkbox elementsRight" id="Checkbox" type="checkbox" data-bind="checked: showdone" />
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/javascripts/knockout-3.4.0.js"></script>
+<script src="/javascripts/JavaScript"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
