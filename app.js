@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var todo = require('./my_modules/todo/todo');
 
 var routes = require('./routes/index');
 
@@ -28,19 +29,12 @@ app.get('/api/todolist', function (req, res) {
 
   fs.readFile('./data.csv', 'utf-8', function (err, data) {
 
-    function ToDoElement(id, text, bool) {
-      var self = this;
-      self.toDoText = text;
-      self.id = id;
-      self.done = bool;
-    }
-
     var lines = data.split('\r\n');
 
     var arry = [];
     lines.forEach(function (line) {
       var parts = line.split(';');
-      arry.push(new ToDoElement(parts[0], parts[1], parts[2]));
+      arry.push(new todo.ToDoElement(parts[0], parts[1], parts[2]));
     });
     console.log("-----------------------------------------------------------------------");
     console.log(arry);
