@@ -1,4 +1,5 @@
 $(function () {
+
     function ToDoElement(text, bool, id) {
         var self = this;
         self.toDoText = ko.observable(text);
@@ -28,6 +29,7 @@ $(function () {
         self.Add = function () {
             if (self.ToDotextInput()) {
                 var newToDo = new ToDoElement(self.ToDotextInput(), false);
+                console.log(newToDo);
                 self.ToDoItems.push(newToDo);
                 self.ToDotextInput("");
             }
@@ -38,11 +40,9 @@ $(function () {
         }
     };
 
-    function AddToDo(data)
-    {
-        var newToDo = new ToDoElement(data.toDoText, data.done, data.id);
-        vm.ToDoItems.push(newToDo);
-    }
+    var vm = new ViewModel();
+    ko.applyBindings(vm);
+    requestJsonToDo();
 
     function requestJsonToDo() {
         $.ajax({
@@ -50,13 +50,8 @@ $(function () {
         }).done(function (datas) {
             console.log(datas);
             datas.forEach(function (data) {
-                AddToDo(data);
+                vm.ToDoItems.push(new ToDoElement(data.toDoText, data.done, data.id));
             });
         });
     }
-
-    var vm = new ViewModel();
-    ko.applyBindings(vm);
-    requestJsonToDo();
-
 });

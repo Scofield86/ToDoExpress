@@ -27,25 +27,13 @@ app.use('/', routes);
 
 app.get('/api/todolist', function (req, res) {
 
-  fs.readFile('./data.csv', 'utf-8', function (err, data) {
+  fs.readFile('./data.txt', 'utf-8', function (err, data) {
 
-    var lines = data.split('\r\n');
-
-    var arry = [];
-    lines.forEach(function (line) {
-      var parts = line.split(';');
-      arry.push(new todo.ToDoElement(parts[0], parts[1], parts[2]));
-    });
-    console.log("-----------------------------------------------------------------------");
-    console.log(arry);
-
-    // TODO: How do we set the content type we're sending back?
     res.writeHead(200, {
       'Content-Type': 'text/json; charset=utf-8'
     });
 
-    // TODO: How do we serialize responseData to a JSON string?
-    res.end(JSON.stringify(arry));
+    res.end(data);
 
   });
 });
