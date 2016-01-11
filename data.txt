@@ -1,1 +1,0 @@
-[{"toDoText":"Element1","id":"1","done":"true"},{"toDoText":"Element2","id":"2","done":"false"},{"toDoText":"Element3","id":"3","done":"false"},{"toDoText":"Element4","id":"4","done":"true"},{"toDoText":"Element5","id":"5","done":"false"},{"toDoText":"Element6","id":"6","done":"false"}]
